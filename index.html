@@ -191,6 +191,21 @@
         margin-bottom: 0 !important;
     }
 }
+footer p {
+    margin: 0;
+    transition: 0.3s;
+}
+
+footer span:hover {
+    text-shadow: 0 0 10px #c5a959; /* تأثير إضاءة لما تمشي بالماوس على اسمك */
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    footer p {
+        font-size: 12px; /* تصغير الخط شوية على الفون */
+    }
+}
     </style>
 </head>
 <body class="light-mode">
@@ -467,5 +482,10 @@ function updatePrice() {
     document.getElementById('priceLabel').innerText = `السعر : ${price} EGP`;
 }
     </script>
+    <footer style="background-color: #000; color: #fff; text-align: center; padding: 20px 0; margin-top: 50px; border-top: 1px solid #c5a959;">
+    <p style="font-family: 'Arial', sans-serif; font-size: 14px; letter-spacing: 1px;">
+        Designed & Developed by: <span style="color: #c5a959; font-weight: bold;">Eng / Ziad Mamdouh</span>
+    </p>
+</footer>
 </body>
 </html>
