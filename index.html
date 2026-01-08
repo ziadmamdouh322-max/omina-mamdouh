@@ -490,7 +490,13 @@ function updatePrice() {
         } else if (city === "الأقصر") {
             price = "500"; 
         }
-    }
+      }
+      // إخفاء شاشة التحميل بعد 3 ثواني
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader-wrapper').classList.add('loader-hidden');
+            }, 3000);
+        });
 
     document.getElementById('priceLabel').innerText = `السعر : ${price} EGP`;
 }
@@ -502,5 +508,6 @@ function updatePrice() {
 </footer>
 </body>
 </html>
+
 
 
