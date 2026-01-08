@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omnia Mamdouh | Veil Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <style>
+        :root {
+            --gold: #c5a059;
+            --bg: #000000;
+            --text: #222;
+            --card-bg: #ffffff;
+            --border: #ddd;
+        }
+
+        .dark-mode {
+            --bg: #0a0a0a;
+            --text: #eee;
+            --card-bg: #151515;
+            --border: #333;
+        }
+
+        * { box-sizing: border-box; transition: 0.3s; margin: 0; padding: 0; text-decoration: none !important; }
+        body { background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; overflow-x: hidden; }
+
+        /* Navbar */
+        nav { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); position: fixed; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border); }
+        .logo-box { display: flex; align-items: center; gap: 10px; }
+        .logo-img { width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--gold); padding: 2px; }
+/* تنسيق الحاوية (المستطيل المظبوط) */
+.hero-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 400px; /* طول المستطيل */
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+}
+
+/* الصورة الخلفية مع الفيد المظبوط */
+.hero-image-full {
+    background-image: url('IMG_20260103_205304_684 copy.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%; /* تأكد من وجود أبعاد */
+    height: 200px; /* أو الارتفاع الذي تفضله */
+    border-radius: 20px; /* ليتناسب مع الحواف المنحنية في التصميم */
+}   
+
+/* المحتوى النصي */
+.hero-content-new {
+    position: relative;
+    z-index: 2;
+    padding: 60px;
+    width: 50%;
+    text-align: right;
+}
+
+.hero-content-new h1 { 
+    font-family: 'Amiri', serif; 
+    font-size: 3.5rem; 
+    color: #c5a059; 
+    margin-bottom: 10px; 
+}
+
+.hero-content-new p { 
+    font-size: 1.5rem; 
+    color: #666; 
+}
+        /* Swiper / Albums */
+        .album-section { padding: 80px 0; text-align: center; }
+        .album-section h2 { margin-bottom: 40px; color: var(--gold); font-family: 'Amiri'; font-size: 2.5rem; }
+        
+        .swiper { width: 100%; padding-bottom: 50px; }
+        .swiper-slide { 
+            width: 300px; height: 450px; 
+            border-radius: 20px; overflow: hidden;
+            transform: scale(0.85); transition: 0.5s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .swiper-slide-active { transform: scale(1.1); z-index: 10; border: 2px solid var(--gold); }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Booking Card */
+        .booking-card { 
+            max-width: 600px; margin: 50px auto; padding: 40px; 
+            background: var(--card-bg); border-radius: 30px; 
+            border: 1px solid var(--gold); box-shadow: 0 15px 40px rgba(0,0,0,0.05); 
+        }
+        input, select { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); color: var(--text); }
+        .submit-btn { width: 100%; padding: 18px; background: var(--gold); color: #fff; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
+
+        /* Floating WhatsApp */
+        .wa-float { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2000; color: white; box-shadow: 0 10px 20px rgba(37,211,102,0.3); }
+
+        @media (max-width: 992px) {
+            .hero-container { grid-template-columns: 1fr; }
+            .hero-content { order: 2; padding: 40px 20px; text-align: center; }
+            .hero-image { height: 350px; min-height: auto; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+        /* Pricing Section Styles */
+        .pricing-section { padding: 80px 5%; background: #000000; color: #fff; }
+        .section-title { text-align: center; color: var(--gold); font-family: 'Amiri'; font-size: 2.5rem; margin-bottom: 50px; }
+        
+        .pricing-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+
+        .price-card { 
+            background: #000000; 
+            border: 1px solid #d1d1d1; 
+            border-radius: 20px; 
+            padding: 40px 30px; 
+            text-align: right;
+            transition: 0.4s;
+            position: relative;
+        }
+        .hero-image-full {
+    background-color: #fff; /* اللون الأبيض الحالي */
+    border-radius: 40px; 
+    overflow: hidden; /* عشان الصورة متطلعش بره الحواف الدائرية */
+    height: 400px; /* حدد الارتفاع اللي يناسبك */
+}
+
+.hero-image-full img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* عشان الصورة متتمطش وتتحافظ على أبعادها */
+}
+
+        .price-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .price-card.featured { border: 2px solid var(--gold); background: #151515; }
+
+        .card-header h3 { font-size: 1.5rem; color: #fff; margin-bottom: 15px; }
+        .price-tag { font-size: 2rem; color: var(--gold); font-weight: bold; margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 15px; }
+        .price-tag span { font-size: 1rem; color: #888; }
+
+        .features { list-style: none; padding: 0; }
+        .features li { margin-bottom: 15px; color: #ccc; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+        .features li i { color: var(--gold); font-size: 0.8rem; }
+        
+        .location { margin-top: 20px; color: var(--gold) !important; font-weight: bold; }
+
+        @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
+        /* ضبط عام للموبايل */
+@media (max-width: 768px) {
+    /* تصغير نصوص شاشة التحميل */
+    .loader-name {
+        font-size: 2rem !important; /* حجم أصغر للاسم */
+    }
+    .loader-subtitle {
+        font-size: 1.1rem !important;
+    }
+
+    /* ضبط الجزء الأبيض (الـ Hero) */
+    .hero-wrapper {
+        padding: 60px 20px 30px !important; /* تقليل المسافات العلوية */
+    }
+    
+    .hero-image-full {
+        height: 300px !important; /* تقليل الارتفاع ليناسب شاشة الفون */
+        border-radius: 20px !important;
+    }
+
+    /* تحويل قسم الآراء لسكرول أفقي بدل ما يظهروا تحت بعض */
+    .pricing-grid {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        gap: 15px !important;
+        padding: 10px !important;
+        -webkit-overflow-scrolling: touch; /* سكرول ناعم للايفون */
+    }
+
+    .price-card {
+        min-width: 85% !important; /* يخلي الكارت واخد معظم عرض الشاشة */
+        margin-bottom: 0 !important;
+    }
+}
+    </style>
+</head>
+<body class="light-mode">
+
+    <nav>
+        
+        <div class="logo-box">
+            <img src="C:\Users\Elnour Tech\Downloads\omnia\Gemini_Generated_Image_egg7uoegg7uoegg7.png" class="logo-img">
+            <div>
+                <p style="color:var(--gold); font-weight:bold;">Omnia Mamdouh</p>
+                <small>Veil Designer</small>
+            </div>
+        </div>
+        <div class="nav-controls">
+            <div class="mode-toggle" onclick="toggleDarkMode()" style="cursor:pointer; color:var(--gold)"><i class="fas fa-moon"></i></div>
+            <div class="lang-btn" onclick="toggleLang()" id="langBtn" style="cursor:pointer; border:1px solid var(--gold); padding:5px 15px; border-radius:20px; color:var(--gold); font-size:12px">English</div>
+        </div>
+    </nav>
+
+<section class="hero-wrapper" style="padding: 120px 5% 60px;">
+    <div class="hero-container">
+<div class="hero-image-full">
+    <img src="C:\Users\Elnour Tech\Downloads\omnia\IMG_20260103_205304_684 copy.jpg" alt="Hero Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+</div>        
+        <div class="hero-content-new">
+            <h1>Omnia Mamdouh</h1>
+            <p>Veil Designer</p>
+            <button onclick="document.getElementById('booking').scrollIntoView()" 
+                style="margin-top:30px; padding:15px 40px; background:#c5a059; border:none; color:white; border-radius:50px; cursor:pointer; font-weight:bold; box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);">
+                احجزي الآن
+            </button>
+        </div>
+    </div>
+</section>
+
+    <section class="album-section">
+        <h2 id="wed-h">ألبوم</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG_20260103_205304_237.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG_20260103_205304_550.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0059.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG_20260103_205304_932.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG_20260103_205305_017.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0075.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG_20260103_205304_237.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG_20260103_205304_550.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0059.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG_20260103_205304_932.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG_20260103_205305_017.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0075.jpg"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+         <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0068.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0069.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0047.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0068.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0069.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0047.jpg"></div>
+                 <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0068.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0069.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0047.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0068.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0069.jpg"></div>
+                <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0047.jpg"></div>
+            </div>
+            <section class="testimonials-section" style="padding: 80px 5%; background: #0c0c0c;">
+    <h2 style="text-align: center; color: #c5a059; font-family: 'Amiri'; font-size: 2.5rem; margin-bottom: 50px;">آراء   </h2>
+    
+    <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto;">
+        
+        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"بجد تسلم ايدك يا أمنية، اللفة كانت ثابتة طول الفرح وشكلها كان ملكي جداً."</p>
+            <h4 style="margin-top: 15px; color: #222;">سارة أحمد</h4>
+        </div>
+
+        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"أجمل لفة طرحة عملتها في حياتي، ذوق ورقي في التعامل."</p>
+            <h4 style="margin-top: 15px; color: #222;">مريم محمد</h4>
+        </div>
+
+        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"الكل سألني على لفة الطرحة في خطوبتي، بجد شكراً ليكِ."</p>
+            <h4 style="margin-top: 15px; color: #222;">نورهان علي</h4>
+        </div>
+
+        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"شغل احترافي ومواعيد دقيقة جداً، أنصح أي عروسة تتعامل معاها."</p>
+            <h4 style="margin-top: 15px; color: #222;">آية محمود</h4>
+        </div>
+         <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"شغل احترافي ومواعيد دقيقة جداً، أنصح أي عروسة تتعامل معاها."</p>
+            <h4 style="margin-top: 15px; color: #222;">آية محمود</h4>
+        </div>
+         <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"شغل احترافي ومواعيد دقيقة جداً، أنصح أي عروسة تتعامل معاها."</p>
+            <h4 style="margin-top: 15px; color: #222;">آية محمود</h4>
+        </div>
+        
+        
+        </div>
+</section>
+            <div class="swiper-pagination"></div>
+            
+        </div>
+    </section>
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <h2 class="section-title">الباكدجات  </h2>
+            <div class="pricing-grid">
+                
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>زفاف (قنا)</h3>
+                        <div class="price-tag">1000 <span>EGP</span></div>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> لف طرحة زفاف (Modern/Royal)</li>
+                        <li><i class="fas fa-check"></i> تثبيت التاج والطرحة</li>
+                        <li><i class="fas fa-check"></i> استخدام دبابيس طبية</li>
+                        <li><i class="fas fa-check"></i> متاح الخامات الطرحه والتاج </li>
+                        <li class="location"><i class="fas fa-map-marker-alt"></i> داخل نطاق قنا</li>
+                        <li class="location"><i class="fas fa-info-circle"></i>  التنقل خارج اسعار الباكدج </li>
+                    </ul>
+                </div>
+                
+                
+
+                <div class="price-card featured">
+                    <div class="card-header">
+                        <h3>زفاف (الأقصر)</h3>
+                        <div class="price-tag">1000 <span>EGP</span></div>
+                    </div>
+                    <ul class="features">
+              <li><i class="fas fa-check"></i> لف طرحة زفاف (Modern/Royal)</li>
+                        <li><i class="fas fa-check"></i> تثبيت التاج والطرحة</li>
+                        <li><i class="fas fa-check"></i> استخدام دبابيس طبية</li>
+                        <li><i class="fas fa-check"></i> متاح الخامات الطرحه والتاج </li>
+                        <li class="location"><i class="fas fa-map-marker-alt"></i> داخل نطاق الاقصر</li>
+                        <li class="location"><i class="fas fa-info-circle"></i>  التنقل خارج اسعار الباكدج </li>
+                    </ul>
+                </div>
+
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>باكدج سواريه (قنا)</h3>
+                        <div class="price-tag">400 <span>EGP</span></div>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> لف طرحة سواريه (Modern)</li>
+                        <li><i class="fas fa-check"></i> استخدام دبابيس طبية</li>
+                        <li><i class="fas fa-check"></i> متاح الخامات الطرحه والتاج </li>
+                        <li class="location"><i class="fas fa-map-marker-alt"></i> داخل نطاق قنا</li>
+                        <li class="location"><i class="fas fa-info-circle"></i>  التنقل خارج اسعار الباكدج </li>
+                    </ul>
+                </div>
+                               <div class="price-card">
+                    <div class="card-header">
+                       <h3>باكدج سواريه (الأقصر)</h3>
+                        <div class="price-tag">500<span>EGP</span></div>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> لف طرحة سواريه (Modern)</li>
+                        <li><i class="fas fa-check"></i> استخدام دبابيس طبية</li>
+                        <li><i class="fas fa-check"></i> متاح الخامات الطرحه والتاج </li>
+                        <li class="location"><i class="fas fa-map-marker-alt"></i> داخل نطاق الاقصر</li>
+                        <li class="location"><i class="fas fa-info-circle"></i>  التنقل خارج اسعار الباكدج </li>
+                    </ul>
+                </div>
+                               <div class="price-card">
+                    <div class="card-header">
+                        <h3> خطوبه / كتب كتاب / حنه (قنا)</h3>
+                        <div class="price-tag">500 <span>EGP</span></div>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> لف طرحة سواريه (Modern)</li>
+                        <li><i class="fas fa-check"></i> استخدام دبابيس طبية</li>
+                        <li><i class="fas fa-check"></i> تنسيق اللفة مع الفستان</li>
+                        <li class="location"><i class="fas fa-map-marker-alt"></i> داخل نطاق قنا</li>
+                        <li class="location"><i class="fas fa-info-circle"></i>  التنقل خارج اسعار الباكدج </li>
+                    </ul>
+                </div>
+                                               <div class="price-card">
+                    <div class="card-header">
+                        <h3> خطوبه / كتب كتاب / حنه (الاقصر)</h3>
+                        <div class="price-tag">600 <span>EGP</span></div>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> لف طرحة سواريه (Modern)</li>
+                        <li><i class="fas fa-check"></i> استخدام دبابيس طبية</li>
+                        <li><i class="fas fa-check"></i> تنسيق اللفة مع الفستان</li>
+                        <li class="location"><i class="fas fa-map-marker-alt"></i> داخل نطاق قنا</li>
+                        <li class="location"><i class="fas fa-info-circle"></i>  التنقل خارج اسعار الباكدج </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="booking-card" id="booking">
+        <h2 id="form-h">تفاصيل الحجز</h2>
+        <form id="bookForm">
+            <input type="text" name="bride" placeholder="اسم العروسة" required>
+            <input type="tel" name="phone" placeholder="رقم الموبايل" required>
+            <input type="date" name="event_date" required>
+            <select name="city" id="citySel" onchange="updatePrice()">
+                <option value="قنا">قنا</option>
+                <option value="الأقصر">الأقصر</option>
+            </select>
+            <select name="type" id="typeSel" onchange="updatePrice()">
+    <option value="زفاف">باكدج زفاف</option>
+    <option value="سواريه">باكدج سواريه</option>
+    <option value="خطوبه">باكدج خطوبه / كتب كتاب / حنه</option>
+</select>
+            
+            <div style="text-align:center; font-weight:bold; margin-bottom:15px; color:var(--gold)" id="priceLabel"> السعر : 0 EGP</div>
+            <button type="submit" class="submit-btn" id="subBtn">تأكيد عبر واتساب</button>
+        </form>
+    </div>
+
+    <a href="https://wa.me/201021445508" class="wa-float"><i class="fab fa-whatsapp fa-2x"></i></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            coverflowEffect: { rotate: 0, stretch: 0, depth: 100, modifier: 2, slideShadows: false },
+            autoplay: { delay: 2500 }
+        });
+
+        function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
+        
+function updatePrice() {
+    const city = document.getElementById('citySel').value;
+    const type = document.getElementById('typeSel').value;
+    let price = "";
+
+    // 1. منطق باكدج الزفاف
+    if (type === "زفاف") {
+        price = "1000"; // بما إن السعر موحد لقنا والأقصر عندك
+    } 
+    
+    // 2. منطق باكدج (حنة / كتب كتاب / خطوبة)
+    else if (type === "خطوبه") { // لازم الكلمة هنا تساوي الـ value اللي فوق
+        if (city === "قنا") {
+            price = "500"; 
+        } else if (city === "الأقصر") {
+            price = "600"; 
+        }
+    } 
+    
+    // 3. منطق باكدج السواريه
+    else if (type === "سواريه") {
+        if (city === "قنا") {
+            price = "400"; 
+        } else if (city === "الأقصر") {
+            price = "500"; 
+        }
+    }
+
+    document.getElementById('priceLabel').innerText = `السعر : ${price} EGP`;
+}
+    </script>
+</body>
+</html>
