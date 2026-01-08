@@ -12,19 +12,14 @@
         :root {
             --gold: #c5a059;
             --bg: #000000;
-            --text: #222;
-            --card-bg: #ffffff;
-            --border: #ddd;
+            --text: #ffffff;
+            --card-bg: #1a1a1a;
+            --border: #ffffff;
         }
 
-        .dark-mode {
-            --bg: #0a0a0a;
-            --text: #eee;
-            --card-bg: #151515;
-            --border: #333;
-        }
+   
 
-        * { box-sizing: border-box; transition: 0.3s; margin: 0; padding: 0; text-decoration: none !important; }
+        * { box-sizing: border-box; transition: 0.10s; margin: 0; padding: 0; text-decoration: none !important; }
         body { background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; overflow-x: hidden; }
          /* شاشة التحميل (Intro) */
         #loader-wrapper {
@@ -37,37 +32,47 @@
         nav { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); position: fixed; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border); }
         .logo-box { display: flex; align-items: center; gap: 10px; }
         .logo-img { width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--gold); padding: 2px; }
-/* تنسيق الحاوية (المستطيل المظبوط) */
+/* تنسيق الحاوية السوداء */
 .hero-container {
     width: 100%;
-    max-width: 1200px;
-    height: 400px; /* طول المستطيل */
+    max-width: 1000px;
+    min-height: 300px; /* جعل الطول مرن */
     margin: 0 auto;
-    background: #ffffff;
+    background: #575757;
     border-radius: 30px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
     display: flex;
-    align-items: center;
+    justify-content: center; /* توسيط أفقي */
+    align-items: center;     /* توسيط رأسي */
+    padding: 40px 20px;
 }
 
-/* الصورة الخلفية مع الفيد المظبوط */
-.hero-image-full {
-    background-image: url('IMG_20260103_205304_684 copy.jpg');
-    background-size: cover;
-    background-position: center;
-    width: 100%; /* تأكد من وجود أبعاد */
-    height: 200px; /* أو الارتفاع الذي تفضله */
-    border-radius: 20px; /* ليتناسب مع الحواف المنحنية في التصميم */
-}   
+/* تنسيق المحتوى الداخلي */
+.hero-content-new {
+    text-align: center; /* توسيط النص والزر والصورة */
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* ترتيب العناصر تحت بعض */
+    align-items: center;
+    gap: 20px; /* مسافة بين الزر والصورة */
+}
+
+/* تحسين شكل الصورة */
+.hero-sub-image img {
+    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.2);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+
+  
 
 /* المحتوى النصي */
 .hero-content-new {
     position: relative;
     z-index: 2;
-    padding: 60px;
-    width: 50%;
+    padding: 1px;
+    width: 1%;
     text-align: right;
 }
 
@@ -80,7 +85,7 @@
 
 .hero-content-new p { 
     font-size: 1.5rem; 
-    color: #666; 
+    color: #ffffff; 
 }
         /* Swiper / Albums */
         .album-section { padding: 80px 0; text-align: center; }
@@ -139,12 +144,12 @@
     background-color: #fff; /* اللون الأبيض الحالي */
     border-radius: 40px; 
     overflow: hidden; /* عشان الصورة متطلعش بره الحواف الدائرية */
-    height: 400px; /* حدد الارتفاع اللي يناسبك */
+    height:800px; /* حدد الارتفاع اللي يناسبك */
 }
 
 .hero-image-full img {
-    width: 100%;
-    height: 100%;
+    width: 20%;
+    height: 20%;
     object-fit: cover; /* عشان الصورة متتمطش وتتحافظ على أبعادها */
 }
 
@@ -161,9 +166,9 @@
         
         .location { margin-top: 20px; color: var(--gold) !important; font-weight: bold; }
 
-        @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 500px) { .pricing-grid { grid-template-columns: 1fr; } }
         /* ضبط عام للموبايل */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     /* تصغير نصوص شاشة التحميل */
     .loader-name {
         font-size: 2rem !important; /* حجم أصغر للاسم */
@@ -174,7 +179,7 @@
 
     /* ضبط الجزء الأبيض (الـ Hero) */
     .hero-wrapper {
-        padding: 60px 20px 30px !important; /* تقليل المسافات العلوية */
+        padding: 10px 10px 10px !important; /* تقليل المسافات العلوية */
     }
     
     .hero-image-full {
@@ -216,12 +221,14 @@ footer span:hover {
 </head>
 <body class="light-mode">
     
-  
     </div>
 
     <nav>
         
-      
+        
+        <div class="logo-bo class="
+            <div>
+                
                 <p style="color:var(--gold); font-weight:bold;">Omnia Mamdouh</p>
                 <small>Veil Designer</small>
             </div>
@@ -234,17 +241,17 @@ footer span:hover {
 
 <section class="hero-wrapper" style="padding: 120px 5% 60px;">
     <div class="hero-container">
-<div class="hero-image-full">
-    <img src="C:\Users\Elnour Tech\Downloads\omnia\IMG_20260103_205304_684 copy.jpg" alt="Hero Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
-</div>        
-        <div class="hero-content-new">
-            <h1>Omnia Mamdouh</h1>
-            <p>Veil Designer</p>
-            <button onclick="document.getElementById('booking').scrollIntoView()" 
-                style="margin-top:30px; padding:15px 40px; background:#c5a059; border:none; color:white; border-radius:50px; cursor:pointer; font-weight:bold; box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);">
-                احجزي الآن
-            </button>
-        </div>
+      
+  <div class="hero-content-new">
+    <button onclick="document.getElementById('booking').scrollIntoView()" 
+        style="padding:15px 40px; background:#c5a059; border:none; color:white; border-radius:80px; cursor:pointer; font-weight:bold; box-shadow: 0 5px 10px rgba(197, 160, 89, 0.4); margin-bottom: 20px;">
+        احجزي الآن
+    </button>
+
+    <div class="hero-sub-image">
+        <img src="C:\Users\Elnour Tech\Downloads\omnia\hero.jpg" alt="Omnia Mamdouh" style="width: 100%; max-width: 300px; border-radius: 15px;">
+    </div>
+</div>
     </div>
 </section>
 
@@ -283,43 +290,7 @@ footer span:hover {
                 <div class="swiper-slide"><img src="C:\Users\Elnour Tech\Downloads\omnia\IMG-20260103-WA0047.jpg"></div>
             </div>
             <section class="testimonials-section" style="padding: 80px 5%; background: #0c0c0c;">
-    <h2 style="text-align: center; color: #c5a059; font-family: 'Amiri'; font-size: 2.5rem; margin-bottom: 50px;">آراء   </h2>
     
-    <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto;">
-        
-        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p style="font-style: italic; color: #555;">"بجد تسلم ايدك يا أمنية، اللفة كانت ثابتة طول الفرح وشكلها كان ملكي جداً."</p>
-            <h4 style="margin-top: 15px; color: #222;">سارة أحمد</h4>
-        </div>
-
-        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p style="font-style: italic; color: #555;">"أجمل لفة طرحة عملتها في حياتي، ذوق ورقي في التعامل."</p>
-            <h4 style="margin-top: 15px; color: #222;">مريم محمد</h4>
-        </div>
-
-        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p style="font-style: italic; color: #555;">"الكل سألني على لفة الطرحة في خطوبتي، بجد شكراً ليكِ."</p>
-            <h4 style="margin-top: 15px; color: #222;">نورهان علي</h4>
-        </div>
-
-        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p style="font-style: italic; color: #555;">"شغل احترافي ومواعيد دقيقة جداً، أنصح أي عروسة تتعامل معاها."</p>
-            <h4 style="margin-top: 15px; color: #222;">آية محمود</h4>
-        </div>
-         <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p style="font-style: italic; color: #555;">"شغل احترافي ومواعيد دقيقة جداً، أنصح أي عروسة تتعامل معاها."</p>
-            <h4 style="margin-top: 15px; color: #222;">آية محمود</h4>
-        </div>
-         <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p style="font-style: italic; color: #555;">"شغل احترافي ومواعيد دقيقة جداً، أنصح أي عروسة تتعامل معاها."</p>
-            <h4 style="margin-top: 15px; color: #222;">آية محمود</h4>
-        </div>
         
         
         </div>
@@ -419,6 +390,43 @@ footer span:hover {
                 </div>
 
             </div>
+        </div>
+        <h2 style="text-align: center; color: #c5a059; font-family: 'Amiri'; font-size: 2.5rem; margin-bottom: 50px;">آراء   </h2>
+    
+    <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto;">
+        
+        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"بجد تسلم ايدك يا أمنية، اللفة كانت ثابتة طول الفرح وشكلها كان ملكي جداً."</p>
+            <h4 style="margin-top: 15px; color: #222;">سارة أحمد</h4>
+        </div>
+
+        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"أجمل لفة طرحة عملتها في حياتي، ذوق ورقي في التعامل."</p>
+            <h4 style="margin-top: 15px; color: #222;">مريم محمد</h4>
+        </div>
+
+        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"الكل سألني على لفة الطرحة في خطوبتي، بجد شكراً ليكِ."</p>
+            <h4 style="margin-top: 15px; color: #222;">نورهان علي</h4>
+        </div>
+
+        <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"شغل احترافي ومواعيد دقيقة جداً، أنصح أي عروسة تتعامل معاها."</p>
+            <h4 style="margin-top: 15px; color: #222;">آية محمود</h4>
+        </div>
+         <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"شغل احترافي ومواعيد دقيقة جداً، أنصح أي عروسة تتعامل معاها."</p>
+            <h4 style="margin-top: 15px; color: #222;">آية محمود</h4>
+        </div>
+         <div class="testi-card" style="background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="color: #c5a059; margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-style: italic; color: #555;">"شغل احترافي ومواعيد دقيقة جداً، أنصح أي عروسة تتعامل معاها."</p>
+            <h4 style="margin-top: 15px; color: #222;">آية محمود</h4>
         </div>
     </section>
 
