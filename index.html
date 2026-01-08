@@ -451,54 +451,57 @@ footer span:hover {
 
     <a href="https://wa.me/201021445508" class="wa-float"><i class="fab fa-whatsapp fa-2x"></i></a>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            effect: "coverflow",
-            centeredSlides: true,
-            slidesPerView: "auto",
-            loop: true,
-            coverflowEffect: { rotate: 0, stretch: 0, depth: 100, modifier: 2, slideShadows: false },
-            autoplay: { delay: 2500 }
-        });
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // 1. كود إخفاء شاشة التحميل بعد ما الصفحة تفتح
+    window.addEventListener('load', function() {
+        const loader = document.getElementById('loader-wrapper');
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 800);
+    });
 
-        function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
-        
-function updatePrice() {
-    const city = document.getElementById('citySel').value;
-    const type = document.getElementById('typeSel').value;
-    let price = "";
+    // 2. تشغيل السلايدر (Swiper)
+    var swiper = new Swiper(".mySwiper", {
+        effect: "coverflow",
+        centeredSlides: true,
+        slidesPerView: "auto",
+        loop: true,
+        coverflowEffect: { rotate: 0, stretch: 0, depth: 100, modifier: 2, slideShadows: false },
+        autoplay: { delay: 2500 }
+    });
 
-    // 1. منطق باكدج الزفاف
-    if (type === "زفاف") {
-        price = "1000"; // بما إن السعر موحد لقنا والأقصر عندك
-    } 
-    
-    // 2. منطق باكدج (حنة / كتب كتاب / خطوبة)
-    else if (type === "خطوبه") { // لازم الكلمة هنا تساوي الـ value اللي فوق
-        if (city === "قنا") {
-            price = "500"; 
-        } else if (city === "الأقصر") {
-            price = "600"; 
-        }
-    } 
-    
-    // 3. منطق باكدج السواريه
-    else if (type === "سواريه") {
-        if (city === "قنا") {
-            price = "400"; 
-        } else if (city === "الأقصر") {
-            price = "500"; 
+    function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
+
+    // 3. دالة تحديث السعر (تم تصحيح الأقواس)
+    function updatePrice() {
+        const city = document.getElementById('citySel').value;
+        const type = document.getElementById('typeSel').value;
+        let price = "0";
+
+        if (type === "زفاف") {
+            price = "1000";
+        } else if (type === "خطوبه") {
+            price = (city === "قنا") ? "500" : "600";
+        } else if (type === "سواريه") {
+            price = (city === "قنا") ? "400" : "500";
         }
 
+        document.getElementById('priceLabel').innerText = `السعر : ${price} EGP`;
+    }
 
-    document.getElementById('priceLabel').innerText = `السعر : ${price} EGP`;
-            });
+    // استدعاء الدالة مرة واحدة عند التشغيل لضبط السعر الابتدائي
+    updatePrice();
 
-}
-        
-  
-    </script>
+    // 4. كود إرسال الفورم للواتساب
+    document.getElementById('bookForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const text = `حجز جديد من الموقع:%0Aالاسم: ${formData.get('bride')}%0Aالموبايل: ${formData.get('phone')}%0Aالتاريخ: ${formData.get('event_date')}%0Aالمدينة: ${formData.get('city')}%0Aالنوع: ${formData.get('type')}`;
+        window.open(`https://wa.me/201021445508?text=${text}`, '_blank');
+    });
+</script>
     <footer style="background-color: #000; color: #fff; text-align: center; padding: 20px 0; margin-top: 50px; border-top: 1px solid #c5a959;">
     <p style="font-family: 'Arial', sans-serif; font-size: 14px; letter-spacing: 1px;">
         Designed & Developed by: <span style="color: #c5a959; font-weight: bold;">Eng / Ziad Mamdouh</span>
@@ -508,6 +511,7 @@ function updatePrice() {
 </footer>
 </body>
 </html>
+
 
 
 
