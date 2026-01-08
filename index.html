@@ -216,11 +216,7 @@ footer span:hover {
 </head>
 <body class="light-mode">
     
-    <div id="loader-wrapper">
-        <div class="loader-content">
-            <h1 class="loader-name">Omnia Mamdouh</h1>
-            <p class="loader-subtitle">مصممة حجاب</p>
-        </div>
+  
     </div>
 
     <nav>
@@ -500,6 +496,16 @@ footer span:hover {
         const formData = new FormData(this);
         const text = `حجز جديد من الموقع:%0Aالاسم: ${formData.get('bride')}%0Aالموبايل: ${formData.get('phone')}%0Aالتاريخ: ${formData.get('event_date')}%0Aالمدينة: ${formData.get('city')}%0Aالنوع: ${formData.get('type')}`;
         window.open(`https://wa.me/201021445508?text=${text}`, '_blank');
+
+        window.addEventListener('load', function() {
+    const loader = document.getElementById('loader-wrapper');
+    if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 800); // سيختفي اللودر بعد أقل من ثانية من تحميل الصفحة
+    }
+});
     });
 </script>
     <footer style="background-color: #000; color: #fff; text-align: center; padding: 20px 0; margin-top: 50px; border-top: 1px solid #c5a959;">
@@ -511,6 +517,7 @@ footer span:hover {
 </footer>
 </body>
 </html>
+
 
 
 
